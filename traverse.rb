@@ -23,9 +23,6 @@ matrix = [[1, 2, 3, 4, 5, 6],
 matrix = [[1, 2, 3, 4,],
           [5, 6, 7, 8]]
 
-  (i...length - i).each do |top|
-    puts "top #{matrix[i][top]}"
-  end
 
 class SpiralTraverse
 
@@ -46,12 +43,44 @@ class SpiralTraverse
 
   def run
 
-    (i+1..length-1-i).reverse_each do |left|
-      puts "left #{matrix[left][i]}"
-    end
+    x = 0
 
-    if x == 1
-      break
+    (0...@width).each do |i|
+
+      if x < @num_elements
+        (i...@width - i).each do |top|
+          puts "top #{@matrix[i][top]}"
+          x += 1
+        end
+      else break
+      end
+
+      if x < @num_elements
+        (i+1..@height-1-i).each do |right|
+          puts "right #{@matrix[right][@width - 1 - i]}"
+          x += 1
+        end
+      else break
+      end
+
+      if x < @num_elements
+        (i+1..@width-2-i).reverse_each do |bottom|
+          puts "bottom #{@matrix[@height-1-i][bottom]}"
+          x += 1
+        end
+      else break
+      end
+
+      if x < @num_elements
+        (i+1..@height-1-i).reverse_each do |left|
+          puts "left #{@matrix[left][i]}"
+          x += 1
+        end
+      else break
+      end
+
+      puts "--------"
+
     end
   end
 
