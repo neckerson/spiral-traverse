@@ -27,23 +27,24 @@ matrix = [[1, 2, 3, 4,],
     puts "top #{matrix[i][top]}"
   end
 
-  x = 0
+class SpiralTraverse
 
-  (i+1..length-1-i).each do |right|
-    puts "right #{matrix[right][length - 1 - i]}"
-    x += 1
+  def initialize
+    @matrix = []
+    @width = ""
+    @height = ""
+    @num_elements = ""
   end
 
-  # The thinking here - if we've only traversed ONE space in on the right
-  # side, then the only place to go is LEFT, not DOWN
-
-  if x > 1
-    (i+1..length-2-i).reverse_each do |bottom|
-      puts "bottom #{matrix[length-1-i][bottom]}"
-    end
+  def traverse(matrix)
+    @matrix = matrix
+    @width = matrix.first.length
+    @height = matrix.length
+    @num_elements = matrix.flatten.length
+    run
   end
 
-  if x > 1 || x == 1
+  def run
 
     (i+1..length-1-i).reverse_each do |left|
       puts "left #{matrix[left][i]}"
@@ -54,6 +55,10 @@ matrix = [[1, 2, 3, 4,],
     end
   end
 
-  puts "--------"
+  private
 
 end
+
+spiral_traverse = SpiralTraverse.new
+
+spiral_traverse.traverse(matrix)
