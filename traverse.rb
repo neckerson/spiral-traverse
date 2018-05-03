@@ -1,4 +1,5 @@
 # 5 x 5 matrix
+
 # matrix = [[1, 2, 3, 4],
 #           [5, 6, 7, 8],
 #           [9, 10, 11, 12],
@@ -13,29 +14,41 @@ matrix = [[1, 2, 3, 4, 5, 6],
           [31, 32, 33, 34, 35, 36]]
 
 x = 0
+length = matrix.length
 
-(0...matrix.length).each do |i|
-  (0...4).each do |top|
-    puts matrix[i][top]
+(0...length).each do |i|
+
+  (i...length - i).each do |top|
+    puts "top #{matrix[i][top]}"
   end
-  (1..3).each do |right|
-    puts matrix[right][matrix.length - 1 + i]
+
+  x = 0
+
+  (i+1..length-1-i).each do |right|
+    puts "right #{matrix[right][length - 1 - i]}"
+    x += 1
   end
-  (0..2).reverse_each do |bottom|
-    puts matrix[3][bottom]
+
+  # The thinking here - if we've only traversed ONE space in on the right
+  # side, then the only place to go is LEFT, not DOWN
+
+  if x > 1
+    (i+1..length-2-i).reverse_each do |bottom|
+      puts "bottom #{matrix[length-1-i][bottom]}"
+    end
   end
-  (1..2).reverse_each do |left|
-    puts matrix[left][i]
+
+  if x > 1 || x == 1
+
+    (i+1..length-1-i).reverse_each do |left|
+      puts "left #{matrix[left][i]}"
+    end
+
+    if x == 1
+      break
+    end
   end
+
   puts "--------"
-  x += 0
+
 end
-
-puts "--------"
-puts matrix[1][matrix.length - 1]
-puts matrix[2][matrix.length - 1]
-puts matrix[3][matrix.length - 1]
-
-puts matrix[3][matrix.length - 2]
-puts matrix[3][matrix.length - 3]
-puts matrix[3][matrix.length - 4]
