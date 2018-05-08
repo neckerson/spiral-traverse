@@ -1,10 +1,10 @@
-#Spiral Traverse
+# Spiral Traverse
 Brute-force solution to traverse MxN matrix in a spiral pattern in Ruby (the matrix is provided as an array of arrays).
 
 This class does not modify the original array, nor does it generate a new array
 from the output, simply outputting each element to the terminal as it iterates.
 
-##Usage
+## Usage
 
 Create a new instance of the SpiralTraverse class, and feed it a matrix!
 
@@ -24,7 +24,7 @@ spiral_traverse = SpiralTraverse.new
 
 spiral_traverse.traverse(matrix)
 ```
-##Summary
+## Summary
 This is a fun problem to solve, and could be accomplished a number of ways.
 
 The most elegant solutions use Ruby's built-in Matrix class. Check out the gist below for an example.
